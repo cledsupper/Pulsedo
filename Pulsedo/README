@@ -1,0 +1,82 @@
+Pulsedo Server and Client version 1.0.5
+Pulsedo are scripts to make easy the task of connecting a PulseAudio software which is installed on a Linux computer to an external Android device over (W)LAN.
+by Cledson Cavalcanti (cledsonitgames@gmail.com)
+Check Ledso Tips at:
+    -> https://ledsotips.wordpress.com/
+
+0. MINIMUM REQUIREMENTS
+    1. A device with Debian, or Ubuntu, or Linux Mint, or Fedora, ... installed and working.
+
+    2. An Android device with OS version 5.0 or above.
+        2.u. Termux app installed
+
+    3. Such devices MUST be connected to the SAME ROUTER or LAN.
+
+
+1. INSTALLING CLIENT ON LINUX
+    1. Install "pulsedoclient.sh" on your Linux computer at:
+        /home/YOUR_USERNAME/opt/Pulsedo/
+
+    2. Make sure it has permission for running! If it doesn't have, open file properties and check that box at "Permissions" tab.
+
+    3. Create a link for pulsedoclient.sh with a file explorer and rename the link for "pulsedo". If your file explorer is a shitty one, open a terminal, browse to the same path and type:
+         $ ln -s `pwd`/pulsedoclient.sh pulsedo
+     YES, THEY ARE TWO GRAVE ACCENTS. COPY THAT COMMAND IF YOU DON'T KNOW HOW TO TYPE THEM!!!
+
+    3. Now move this link for:
+        /home/YOUR_USERNAME/bin/
+
+    4. You are now able for calling "pulsedo" when you're going to connect to PulsedoServer. Test it typing "pulsedo --help" on any terminal, it should print this message:
+        | USE: ./pulsedoclient.sh [<command> | <-r |--remove-def-ip> | <-h | --help>]
+        |
+        | OPTIONS DESCRIPTION
+        |             <command> - a command or program name to be runned with Pulsedo. That is, with the environment variable PULSE_SERVER set.
+        |   -r, --remove-def-ip - remove the IP address you had accepted to save as default, so the script will prompt you for IP again.
+        |            -h, --help - show this help text.
+        | Warning: any options without dashes, except <command>, are ALL deprecated!
+        |
+        | PulsedoClient version 1.0.5
+        | by Lesdo Upper (also known as: Ledso, Cledson, Tales)
+        | Contact cledsonitgames@gmail.com for questions.
+
+
+2. INSTALLING SCRIPT FOR SERVER INTO TERMUX ONTO YOUR ANDROID DEVICE
+    0. Install Termux application and:
+        0.u. Install PulseAudio server with:
+            $ pkg install pulseaudio
+
+    1. Copy "pulsedoserver.sh" for your phone's internal storage root folder (/sdcard)
+
+    2. Open Configs menu and select Apps and notifications, select "Apps infos", select Termux and give it the permission for accessing your internal STORAGE.
+
+    3. In Termux, run these following commands:
+        $ mv /sdcard/pulsedoserver.sh ./pulsedo.sh
+        $ chmod +x ./pulsedo.sh
+
+
+3. PREPARING YOUR ANDROID FOR RECEIVING AUDIO FROM LINUX
+    1. Run:
+        $ ./pulsedo.sh --start
+    2. Insert your computer's IP address OR a mask IP for receiving audio of any Linux device. [WE'VE TESTED ONE DEVICE ONLY]
+    3. It's recommended to reply Y if you have used a IP mask. Otherwise, reply anything else.
+
+
+4. RUNNING A PROGRAM WITH Pulsedo
+    1. Type "pulsedo <program name>" on your terminal (or just type pulsedo for help)
+    2. Insert IP address of your Android device (you can get it selecting your WiFi network on WiFi configs, or going on Status at Configs/System)
+    3. Reply Y. If future connections fail, you can delete the default config and trying your phone's newer IP address.
+
+
+5. DISCONNECTING PulsedoClient AND SHUTTING PulsedoServer DOWN
+    1. Exit program started with Pulsedo.
+    2. Close Terminal to make sure connection have been closed.
+    3. Insert the following command on Termux:
+        $ ./pulsedo.sh --kill-server
+
+
+6. TRANSLATE THOSE SCRIPT LINES WHICH HAVE echo COMMANDS TO YOUR PREFERRED LANGUAGE! :)
+
+
+7. PAY ME A COFFEE BY DONATING WITH StreamLabs!
+    By doing this, you also help me to come back for my passion ;D
+    Access https://streamlabs.com/lessodon and support me :)

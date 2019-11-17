@@ -1,0 +1,13 @@
+Versão 1.0.5
+<1> [X] Padronizar comando seguinte as normas.
+    Exemplo: pulsedo <linha de comando> | pulsedo -o | pulsedo --opcao
+<1> [X] Melhora do código fonte.
+    Evitar estrutura if/else, redundâncias, etc.
+<1> [\] Suportar "abrir com".
+    Observação: suportando apenas arquivos executáveis.
+<1> [ ] Lista de afazeres.
+
+Versões posteriores:
+<1> Interface gráfica e app.
+<1> Detecção automática da máscara IP, assim como do IP.
+<N> (Sua sugestão/alteração aqui...)

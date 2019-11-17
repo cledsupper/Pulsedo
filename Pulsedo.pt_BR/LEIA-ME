@@ -1,0 +1,82 @@
+Cliente e Servidor do Pulsedo, versão 1.0.5/pt_BR
+Pulsedo é um conjunto de scripts que facilitam a tarefa de conectar um software compatível com o PulseAudio, o qual está instalado em um computador Linux, com um dispositivo Android externo sob uma rede local (sem fio).
+feito por Cledson Cavalcanti (cledsonitgames@gmail.com)
+Acesse Ledso Tips em:
+    -> https://ledsotips.wordpress.com/
+
+0. REQUISITOS MÍNIMOS
+    1. Um dispositivo com Debian, ou Ubuntu, ou Linux Mint, ou Fedora, ... instalado e funcionando.
+
+    2. Um dispositivo Android com a versão do sistema operacional = 5.0 ou acima.
+        2.u. Aplicativo Termux instalado.
+
+    3. Tais dispositivos DEVEM estar conectados ao MESMO ROTEADOR ou rede local.
+
+
+1. INSTALANDO O CLIENTE (ou 'servidor' de áudio, afinal ele serve alguma coisa...) NO LINUX
+    1. Instale o arquivo "pulsedoclient.sh" em seu computador Linux em:
+        /home/SEU_NOME_DE_USUARIO/opt/Pulsedo/
+
+    2. Tenha certeza que ele tem permissão para executar! Se não, abra as propriedades do arquivo e marque aquela caixa na aba de "Permissões".
+
+    3. Crie um atalho ("link simbólico") para pulsedoclient.sh com um gerenciador de arquivos e renomeie o Link para "pulsedo". Se o seu gerenciador de arquivos é uma porcaria, abra um terminal, navegue pro mesmo endereço e digite:
+         $ ln -s `pwd`/pulsedoclient.sh pulsedo
+     SIM, ESSES "TROCINHOS" SÃO DOIS ACENTOS GRAVES. COPIE ESSE COMANDO SE VOCÊ NÃO SABE DIGITÁ-LOS!!!
+
+    3. Agora mova o link para:
+        /home/SEU_NOME_DE_USUARIO/bin/
+
+    4. Você agora pode chamar "pulsedo" quando for conectar ao PulsedoServer. Teste se o comando funciona digitando "pulsedo help" em qualquer terminal, ele deve imprimir esta mensagem:
+        | USE: /home/talesdo/bin/pulsedo [<command> | <-r |--remove-def-ip> | <-h | --help>]
+        |
+        | DESCRIÇÕES DAS OPÇÕES
+        |             <command> - uma linha de comando ou programa para abrir com Pulsedo. Isto é, com a variável de ambiente PULSE_SERVER espec.
+        |   -r, --remove-def-ip - remove o endereço IP que você aceitou salvar como padrão, assim este script volta a te perturbar de novo pelo IP.
+        |            -h, --help - mostra este texto de ajuda.
+        | Aviso: todas as opções sem traços foram abandonadas!!!
+        |
+        | PulsedoClient versão 1.0.5
+        | by Lesdo Upper (também conhecido como: Ledso, Cledson, Tales)
+        | Envie um e-mail para cledsonitgames@gmail.com se tiver problemas.
+
+
+2. INSTALANDO O SCRIPT DO SERVIDOR NO SEU DISPOSITIVO ANDROID COM TERMUX
+    0. Instale o app Termux e:
+        0.u. Instale o servidor PulseAudio com o comando:
+            $ pkg install pulseaudio
+
+    1. Copie o arquivo "pulsedoserver.sh" para o armazenamento interno do seu celular (/sdcard)
+
+    2. Abra o menu Configurações e selecione Aplicativos e notificações, selecione "Informações de aplicativos", selecione Termux e dê a ele as permissões para acessar o armazenamento interno.
+
+    3. Dentro do Termux, execute estes comandos:
+        $ mv /sdcard/pulsedoserver.sh ./pulsedo.sh
+        $ chmod +x ./pulsedo.sh
+
+
+3. PREPARANDO SEU ANDROID PARA RECEBER ÁUDIO DO LINUX
+    1. Execute:
+        $ ./pulsedo.sh --start
+    2. Insira o endereço IP do seu computador OU uma máscara de IP para receber áudio de qualquer dispositivo Linux. [TESTAMOS APENAS UM DISPOSITIVO]
+    3. É recomendado responder S se você inseriu uma máscara. Caso contrário, responda qualquer outra coisa.
+
+
+4. EXECUTANDO UM PROGRAMA COM O CLIENTE Pulsedo
+    1. Digite "pulsedo <programa>" em seu terminal.
+    2. Insira o IP do dispositivo Android (você pode ver selecionando sua rede WiFi nas configurações WiFi, ou em Status no menu Configs./Sistema)
+    3. Responda S. Se conexões futuras falharem, você pode deletar o IP salvo e tentar o novo do seu celular.
+
+
+5. DESCONECTANDO TUDO
+    1. Encerre o programa iniciado com o Pulsedo.
+    2. Feche o terminal pra ter certeza que a conexão foi encerrada.
+    3. Insira o seguinte comando no Termux:
+        $ ./pulsedo.sh --kill-server
+
+
+6. TRADUZA AS LINHAS DO SCRIPT AS QUAIS TEM OS COMANDOS echo PARA A SUA LINGUAGEM PREFERIDA! :) [use o código fonte em inglês!]
+
+
+7. PAGUE-ME UM CAFÉ DOANDO COM StreamLabs!
+    Ao fazer isso, você também ajuda as lives voltarem ;D
+    Acesse https://streamlabs.com/lessodon e doe! :)
